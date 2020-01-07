@@ -98,9 +98,11 @@ if ( ! function_exists('lessons_shortcode') ) {
 		
             while ( $postslist->have_posts() ) : $postslist->the_post();         
                 $events    .= '<div class="lessons">';
-                $events    .= '<a href="'. get_permalink() .'">'. get_the_post_thumbnail() .'</a>';
+				$events    .= '<a href="'. get_permalink() .'">'. get_the_post_thumbnail() .'</a>';
+				$events    .= '<div class="lessons-grid-title">';
                 $events    .= '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';
-                $events    .= '</div>';            
+				$events    .= '</div>';
+				$events    .= '</div>';          
             endwhile;
             wp_reset_postdata();
             $events  .= '</div>';			

@@ -77,3 +77,32 @@ function create_genre_custom_taxonomy() {
     'rewrite' => array( 'slug' => 'genre' ),
   ));
 }
+
+if ( ! function_exists('lessons_shortcode') ) {
+
+    function lesson_shortcode() {
+    	$args   =   array(
+                	'post_type'         =>  'lesson',
+                	'post_status'       =>  'publish',
+                	'order' => 'ASC',
+                	'posts_per_page' => 10,
+    	            );
+    	            
+        $postslist = new WP_Query( $args );
+        global $post;
+
+        if ( $postslist->have_posts() ) :
+        $events   .= '<div class="lesson-list">';
+		
+            while ( $postslist->have_posts() ) : $postslist->the_post();         
+                $events    .= '<div class="lessons">';
+                $events    .= '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';
+                $events    .= '</div>';            
+            endwhile;
+            wp_reset_postdata();
+            $events  .= '</div>';			
+        endif;    
+        return $events;
+    }
+    add_shortcode( 'lesson', 'lesson_shortcode' );
+}

@@ -100,7 +100,8 @@ if ( ! function_exists('lessons_shortcode') ) {
                 $events    .= '<div class="lessons">';
 				$events    .= '<a href="'. get_permalink() .'">'. get_the_post_thumbnail() .'</a>';
 				$events    .= '<div class="lessons-grid-title">';
-                $events    .= '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';
+				$events    .= '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';
+				$events    .= '<p="'. get_the_author() .'</p>';
 				$events    .= '</div>';
 				$events    .= '</div>';          
             endwhile;

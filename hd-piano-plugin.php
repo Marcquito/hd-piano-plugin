@@ -44,6 +44,8 @@ function lesson_custom_post_type() {
 		'capability_type'     => 'page'
 );
 	register_post_type( 'lesson', $args );
+	wp_register_style('lesson_styles', plugins_url('style.css',__FILE__ ));
+    wp_enqueue_style('lesson_styles');
 }
 add_action( 'init', 'lesson_custom_post_type', 0 );
 
